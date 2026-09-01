@@ -11,4 +11,5 @@ RUN dotnet publish -c Release -o /app/out
 FROM base AS final
 WORKDIR /app
 COPY --from=build /app/out .
-ENTRYPOINT ["dotnet", "web1.dll"]
+# Fix for status 139
+ENTRYPOINT ["dotnet", "/app/web1.dll"]
